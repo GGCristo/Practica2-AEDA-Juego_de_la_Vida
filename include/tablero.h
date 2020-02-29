@@ -9,6 +9,9 @@ class Tablero {
     unsigned int m_;
   public:
     Tablero(unsigned int = 20, unsigned int = 20);
-    Celula* celula (unsigned int, unsigned int);
+    unsigned int get_n();
+    unsigned int get_m();
+    Celula* get_celula (unsigned int, unsigned int);
     std::ostream& write(std::ostream&);
+    void destruir_tablero();
 };
