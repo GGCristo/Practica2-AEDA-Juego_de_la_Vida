@@ -3,13 +3,13 @@
 
 Tablero::Tablero(unsigned int n, unsigned int m): Tablero_(n, std::vector<Celula*>(m, NULL))
 {
-  n_ = n;
-  m_ = m;
+  n_ = n - 2;
+  m_ = m - 2;
   for (int i = 0; i < Tablero_.size(); i++)
   {
     for (int j = 0; j < Tablero_[i].size(); j++)
     {
-      Tablero_[i][j] = new Celula;
+      Tablero_[i][j] = new Celula(i, j);
     }
   }
 }
@@ -31,9 +31,9 @@ Celula* Tablero::get_celula (unsigned int n, unsigned int m)
 
 std::ostream& Tablero::write(std::ostream& os)
 {
-  for (int i = 0; i < Tablero_.size(); i++)
+  for (int i = 1; i <= n_; i++)
   {
-    for (int j = 0; j < Tablero_[i].size(); j++)
+    for (int j = 1; j <= m_; j++)
     {
       Tablero_[i][j] -> write(os);
     }

@@ -5,6 +5,7 @@
 class Tablero {
   private:
     std::vector<std::vector<Celula*>> Tablero_;
+    // Tamaño falso del tablero
     unsigned int n_;
     unsigned int m_;
   public:
