@@ -24,6 +24,35 @@ unsigned int Tablero::get_m()
   return m_;
 }
 
+std::vector<std::vector<Celula*>> Tablero::get_tablero()
+{
+  return Tablero_;
+}
+
+const std::vector<std::vector<Celula*>> Tablero::get_tablero() const
+{
+  return Tablero_;
+}
+
+void Tablero::actualizar()
+{
+  for (int i = 1; i <= n_;i++)
+  {
+    for (int j = 1; j <= m_ ; j++)
+    {
+      Tablero_[i][j] -> guardar_vecinos(*this);
+    }
+  }
+
+  for (int i = 1; i <= n_;i++)
+  {
+    for (int j = 1; j <= m_ ; j++)
+    {
+      Tablero_[i][j] -> actualizar ();
+    }
+  }
+}
+
 Celula* Tablero::get_celula (unsigned int n, unsigned int m)
 {
   return Tablero_[n][m];

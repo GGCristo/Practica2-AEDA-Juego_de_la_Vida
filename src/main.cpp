@@ -49,9 +49,8 @@ int main (){
   std::cout << "Turno 0: " << "\n";
   Tablero0.write(std::cout);
 
-  //El_juego_de_la_vida(Tablero0);
-  std::cout << Tablero0.get_n() << "\n";
-  std::cout << Tablero0.get_m() << "\n";
+  El_juego_de_la_vida(Tablero0);
+  
   Tablero0.destruir_tablero();
   return 0;
 }
@@ -60,7 +59,8 @@ void El_juego_de_la_vida (Tablero& Tablero0)
 {
   for (int i = 0; i < 5; i++)
   {
-    //Tablero0.actualizate();
+    Tablero0.actualizar();
+    std::cout << "Turno " << i + 1 << ": " << "\n";
     Tablero0.write(std::cout);
   }
 }
