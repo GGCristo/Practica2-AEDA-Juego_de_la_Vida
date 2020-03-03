@@ -58,6 +58,11 @@ Celula* Tablero::get_celula (unsigned int n, unsigned int m)
   return Tablero_[n][m];
 }
 
+Celula* Tablero::get_celula (unsigned int n, unsigned int m) const
+{
+  return Tablero_[n][m];
+}
+
 std::ostream& Tablero::write(std::ostream& os)
 {
   for (int i = 1; i <= n_; i++)

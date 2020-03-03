@@ -4,6 +4,8 @@ run:
 	./../bin/main
 debug:
 	g++ -g ../src/main.cpp ../src/celula.cpp ../src/tablero.cpp -o ../bin/main
+clean:
+	rm ../bin/* *.o
 celula.o: ../src/celula.cpp
 	g++ -c ../src/celula.cpp -o ../build/celula.o
 tablero.o: ../src/tablero.cpp

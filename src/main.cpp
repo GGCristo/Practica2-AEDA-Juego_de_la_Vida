@@ -2,7 +2,7 @@
 #include <cassert>
 #include "../include/tablero.h"
 
-void El_juego_de_la_vida(Tablero&);
+void El_juego_de_la_vida(Tablero&, const unsigned int&);
 
 int main (){
   
@@ -29,7 +29,7 @@ int main (){
     std::cout << "Celula número: " << i+1 << "\n";
     std::cout << "¿Valor de la fila?" << "\n";
     std::cin >> x;
-    if (x < 1 && x > Tablero0.get_n())
+    if (x < 1 || x > Tablero0.get_n())
     {
       i--;
       std::cout << "Eso esta fuera de los límites. Intentelo otra vez\n";
@@ -37,7 +37,7 @@ int main (){
     }
     std::cout << "¿Valor de la columna?" << "\n";
     std::cin >> y;
-    if (y < 1 && y > Tablero0.get_m())
+    if (y < 1 || y > Tablero0.get_m())
     {
       i--;
       std::cout << "Eso esta fuera de los límites. Intentelo otra vez\n";
@@ -46,18 +46,22 @@ int main (){
     Tablero0.get_celula(x, y) -> set_Estado(true);
   }
 
-  std::cout << "Turno 0: " << "\n";
+  std::cout << "¿Numero de turnos?\n";
+  unsigned int n_turnos;
+  std::cin >> n_turnos;
+
+  std::cout << "\nTurno 0: " << "\n";
   Tablero0.write(std::cout);
 
-  El_juego_de_la_vida(Tablero0);
-  
+  El_juego_de_la_vida(Tablero0, n_turnos);
+
   Tablero0.destruir_tablero();
   return 0;
 }
 
-void El_juego_de_la_vida (Tablero& Tablero0)
+void El_juego_de_la_vida (Tablero& Tablero0, const unsigned int &n_turnos)
 {
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < n_turnos; i++)
   {
     Tablero0.actualizar();
     std::cout << "Turno " << i + 1 << ": " << "\n";

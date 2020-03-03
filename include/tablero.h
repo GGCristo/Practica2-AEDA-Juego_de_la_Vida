@@ -16,6 +16,7 @@ class Tablero {
     const std::vector<std::vector<Celula*>> get_tablero() const;
     void actualizar();
     Celula* get_celula (unsigned int, unsigned int);
+    Celula* get_celula (unsigned int, unsigned int) const;
     std::ostream& write(std::ostream&);
     void destruir_tablero();
 };
