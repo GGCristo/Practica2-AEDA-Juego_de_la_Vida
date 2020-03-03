@@ -51,7 +51,7 @@ int main (){
   std::cin >> n_turnos;
 
   std::cout << "\nTurno 0: " << "\n";
-  Tablero0.write(std::cout);
+  std::cout << Tablero0;
 
   El_juego_de_la_vida(Tablero0, n_turnos);
 
@@ -65,6 +65,6 @@ void El_juego_de_la_vida (Tablero& Tablero0, const unsigned int &n_turnos)
   {
     Tablero0.actualizar();
     std::cout << "Turno " << i + 1 << ": " << "\n";
-    Tablero0.write(std::cout);
+    std::cout << Tablero0;
   }
 }

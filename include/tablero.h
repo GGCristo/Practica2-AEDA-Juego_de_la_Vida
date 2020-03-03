@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef Tab
+#define Tab
 #include <vector>
 #include "celula.h"
 class Celula;
@@ -17,6 +19,8 @@ class Tablero {
     void actualizar();
     Celula* get_celula (unsigned int, unsigned int);
     Celula* get_celula (unsigned int, unsigned int) const;
-    std::ostream& write(std::ostream&);
+    std::ostream& write(std::ostream&) const;
     void destruir_tablero();
 };
+std::ostream& operator << (std::ostream&, const Tablero&);
+#endif

@@ -88,11 +88,17 @@ void Celula::actualizar()
     Estado_ = false;
 }
 
-std::ostream& Celula::write(std::ostream& os) 
+std::ostream& Celula::write(std::ostream& os) const
 {
   if (Estado_ == true)
     os << "x ";
   else
     os << "  ";
+  return os;
+}
+
+std::ostream& operator << (std::ostream& os, const Celula& celula)
+{
+  celula.write(os);
   return os;
 }

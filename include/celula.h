@@ -1,4 +1,6 @@
-#pragma once
+// #pragma once
+#ifndef Celul
+#define Celul
 #include <iostream>
 #include "tablero.h"
 class Tablero;
@@ -18,5 +20,8 @@ public:
   void set_Estado(bool);
   void guardar_vecinos(const Tablero&);
   void actualizar();
-  std::ostream& write(std::ostream&);
+  std::ostream& write(std::ostream&) const;
+  
 };
+std::ostream& operator << (std::ostream&, const Celula&);
+#endif

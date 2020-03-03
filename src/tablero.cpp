@@ -63,13 +63,13 @@ Celula* Tablero::get_celula (unsigned int n, unsigned int m) const
   return Tablero_[n][m];
 }
 
-std::ostream& Tablero::write(std::ostream& os)
+std::ostream& Tablero::write(std::ostream& os) const
 {
   for (int i = 1; i <= n_; i++)
   {
     for (int j = 1; j <= m_; j++)
     {
-      Tablero_[i][j] -> write(os);
+      os << *Tablero_[i][j];
     }
     os << "\n";
   }
@@ -87,4 +87,10 @@ void Tablero::destruir_tablero()
       delete Tablero_[i][j];
     }
   }
+}
+
+std::ostream& operator << (std::ostream& os, const Tablero& tablero)
+{
+  tablero.write(os);
+  return os;
 }
