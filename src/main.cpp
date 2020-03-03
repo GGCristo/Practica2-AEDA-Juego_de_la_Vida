@@ -43,7 +43,7 @@ int main (){
       std::cout << "Eso esta fuera de los límites. Intentelo otra vez\n";
       continue;
     }
-    Tablero0.get_celula(x, y) -> set_Estado(true);
+    Tablero0.get_celula(x, y).set_Estado(true);
   }
 
   std::cout << "¿Numero de turnos?\n";

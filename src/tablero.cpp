@@ -1,18 +1,16 @@
 #include <array>
 #include "../include/tablero.h"
 
-Tablero::Tablero(unsigned int n, unsigned int m): Tablero_(n, std::vector<Celula*>(m, NULL))
+Tablero::Tablero(unsigned int n, unsigned int m)
 {
   n_ = n - 2;
   m_ = m - 2;
-  for (int i = 0; i < Tablero_.size(); i++)
+  Tablero_ = new Celula*[n];
+  for (int i = 0; i < n; i++)
   {
-    for (int j = 0; j < Tablero_[i].size(); j++)
-    {
-      Tablero_[i][j] = new Celula(i, j);
-    }
+    Tablero_[i] = new Celula[m];
   }
-}
+} 
 
 unsigned int Tablero::get_n()
 {
@@ -24,15 +22,15 @@ unsigned int Tablero::get_m()
   return m_;
 }
 
-std::vector<std::vector<Celula*>> Tablero::get_tablero()
+Celula** Tablero::get_tablero()
 {
   return Tablero_;
 }
 
-const std::vector<std::vector<Celula*>> Tablero::get_tablero() const
-{
-  return Tablero_;
-}
+//const Celula** Tablero::get_tablero() const
+//{
+//  return Tablero_;
+//}
 
 void Tablero::actualizar()
 {
@@ -40,7 +38,7 @@ void Tablero::actualizar()
   {
     for (int j = 1; j <= m_ ; j++)
     {
-      Tablero_[i][j] -> guardar_vecinos(*this);
+      Tablero_[i][j].guardar_vecinos(*this);
     }
   }
 
@@ -48,17 +46,17 @@ void Tablero::actualizar()
   {
     for (int j = 1; j <= m_ ; j++)
     {
-      Tablero_[i][j] -> actualizar ();
+      Tablero_[i][j].actualizar ();
     }
   }
 }
 
-Celula* Tablero::get_celula (unsigned int n, unsigned int m)
+Celula Tablero::get_celula (unsigned int n, unsigned int m)
 {
   return Tablero_[n][m];
 }
 
-Celula* Tablero::get_celula (unsigned int n, unsigned int m) const
+Celula Tablero::get_celula (unsigned int n, unsigned int m) const
 {
   return Tablero_[n][m];
 }
@@ -69,7 +67,7 @@ std::ostream& Tablero::write(std::ostream& os) const
   {
     for (int j = 1; j <= m_; j++)
     {
-      os << *Tablero_[i][j];
+      os << Tablero_[i][j];
     }
     os << "\n";
   }
@@ -80,13 +78,9 @@ void Tablero::destruir_tablero()
 {
   n_ = 0;
   m_ = 0;
-  for (int i = 0; i < Tablero_.size(); i++)
-  {
-    for (int j = 0; j < Tablero_[i].size(); j++)
-    {
-      delete Tablero_[i][j];
-    }
-  }
+  for (int i = 0; i < n_ + 2; ++i)
+    delete [] Tablero_[i];
+  delete [] Tablero_;
 }
 
 std::ostream& operator << (std::ostream& os, const Tablero& tablero)

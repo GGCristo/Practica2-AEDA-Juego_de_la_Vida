@@ -1,0 +1,5 @@
+.vscode
+Session.vim
+build/celula.o
+build/tablero.o
+bin/main

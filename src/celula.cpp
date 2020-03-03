@@ -46,35 +46,35 @@ void Celula::set_Estado(bool valor)
 void Celula::guardar_vecinos(const Tablero& Tablero_)
 {
   vecinos_ = 0;
-  if (Tablero_.get_celula(i_ - 1, j_ - 1) -> get_Estado())
+  if (Tablero_.get_celula(i_ - 1, j_ - 1).get_Estado())
   {
     vecinos_++; 
   }
-  if (Tablero_.get_celula(i_ - 1, j_) -> get_Estado())
+  if (Tablero_.get_celula(i_ - 1, j_).get_Estado())
   {
     vecinos_++; 
   }
-  if (Tablero_.get_celula(i_ - 1, j_+ 1) -> get_Estado())
+  if (Tablero_.get_celula(i_ - 1, j_+ 1).get_Estado())
   {
     vecinos_++; 
   }
-  if (Tablero_.get_celula(i_, j_ - 1) -> get_Estado())
+  if (Tablero_.get_celula(i_, j_ - 1).get_Estado())
   {
     vecinos_++; 
   }
-  if (Tablero_.get_celula(i_, j_ + 1) -> get_Estado())
+  if (Tablero_.get_celula(i_, j_ + 1).get_Estado())
   {
     vecinos_++; 
   }
-  if (Tablero_.get_celula(i_ + 1, j_ -1) -> get_Estado())
+  if (Tablero_.get_celula(i_ + 1, j_ -1).get_Estado())
   {
     vecinos_++; 
   }
-  if (Tablero_.get_celula(i_ + 1, j_) -> get_Estado())
+  if (Tablero_.get_celula(i_ + 1, j_).get_Estado())
   {
     vecinos_++; 
   }
-  if (Tablero_.get_celula(i_ + 1, j_ +1) -> get_Estado())
+  if (Tablero_.get_celula(i_ + 1, j_ +1).get_Estado())
   {
     vecinos_++; 
   }
