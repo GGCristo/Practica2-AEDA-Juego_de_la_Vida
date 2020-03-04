@@ -9,9 +9,13 @@ Tablero::Tablero(unsigned int n, unsigned int m)
   for (int i = 0; i < n; i++)
   {
     Tablero_[i] = new Celula[m];
+    for (int j = 0; j < m; j++)
+    {
+      Tablero_[i][j].set_i(i);
+      Tablero_[i][j].set_j(j);
+    }
   }
 } 
-
 unsigned int Tablero::get_n()
 {
   return n_;
@@ -23,18 +27,18 @@ unsigned int Tablero::get_m()
 }
 
 Celula** Tablero::get_tablero()
+ {
+   return Tablero_;
+ }
+
+Celula** Tablero::get_tablero() const
 {
   return Tablero_;
 }
 
-//const Celula** Tablero::get_tablero() const
-//{
-//  return Tablero_;
-//}
-
 void Tablero::actualizar()
 {
-  for (int i = 1; i <= n_;i++)
+  for (int i = 1; i <= n_; i++)
   {
     for (int j = 1; j <= m_ ; j++)
     {
@@ -42,7 +46,7 @@ void Tablero::actualizar()
     }
   }
 
-  for (int i = 1; i <= n_;i++)
+  for (int i = 1; i <= n_; i++)
   {
     for (int j = 1; j <= m_ ; j++)
     {

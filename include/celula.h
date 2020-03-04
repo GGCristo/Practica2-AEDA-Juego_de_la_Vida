@@ -17,6 +17,8 @@ public:
   ~Celula();
   bool get_Estado() const;
   unsigned int get_vecinos() const;
+  void set_i (int pos) {i_ = pos;}
+  void set_j (int pos) {j_ = pos;}
   void set_Estado(bool);
   void guardar_vecinos(const Tablero&);
   void actualizar();

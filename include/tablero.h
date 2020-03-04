@@ -6,13 +6,6 @@
 class Celula;
 class Tablero {
   private:
-    // Celula** Tablero_;
-
-    //  int rows = ..., cols = ...;
-    //  int** matrix = new int*[rows];
-    //  for (int i = 0; i < rows; ++i)
-    //  matrix[i] = new int[cols];
-
     Celula** Tablero_;
     // Tamaño falso del tablero
     unsigned int n_;
@@ -22,7 +15,7 @@ class Tablero {
     unsigned int get_n();
     unsigned int get_m();
     Celula** get_tablero();
-    // const Celula** get_tablero() const;
+    Celula** get_tablero() const;
     void actualizar();
     Celula get_celula (unsigned int, unsigned int);
     Celula get_celula (unsigned int, unsigned int) const;
