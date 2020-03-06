@@ -17,8 +17,8 @@ class Tablero {
     Celula** get_tablero();
     Celula** get_tablero() const;
     void actualizar();
-    Celula get_celula (unsigned int, unsigned int);
-    Celula get_celula (unsigned int, unsigned int) const;
+    Celula& get_celula (unsigned int, unsigned int);
+    Celula& get_celula (unsigned int, unsigned int) const;
     std::ostream& write(std::ostream&) const;
     void destruir_tablero();
 };
