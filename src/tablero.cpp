@@ -54,6 +54,7 @@ void Tablero::actualizar()
 }
 
 Celula* Tablero::get_celula (unsigned int n, unsigned int m)
+
 {
   return Tablero_[n][m];
 }
@@ -65,14 +66,26 @@ Celula* Tablero::get_celula (unsigned int n, unsigned int m) const
 
 std::ostream& Tablero::write(std::ostream& os) const
 {
+  for (int k = 0; k < m_; k++)
+  {
+    os << " -";
+  }
+  os << "\n";
+
   for (int i = 1; i <= n_; i++)
   {
     for (int j = 1; j <= m_; j++)
     {
-      os << *Tablero_[i][j];
+      os << "|" << *Tablero_[i][j];
     }
-    os << "\n";
+    os << "|\n";
   }
+
+  for (int k = 0; k < m_; k++)
+  {
+    os << " -";
+  }
+  os << "\n";
   return os;
 }
 

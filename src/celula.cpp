@@ -91,9 +91,9 @@ void Celula::actualizar()
 std::ostream& Celula::write(std::ostream& os) const
 {
   if (Estado_ == true)
-    os << "x ";
+    os << "x";
   else
-    os << "  ";
+    os << " ";
   return os;
 }
 
