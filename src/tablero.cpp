@@ -13,6 +13,18 @@ Tablero::Tablero(unsigned int n, unsigned int m): Tablero_(n, std::vector<Celula
     }
   }
 }
+Tablero::Tablero(const Tablero& oTablero)
+{
+  n_ = oTablero.n_;
+  m_ = oTablero.m_;
+  for (int i = 0; i < oTablero.Tablero_.size(); i++)
+  {
+    for (int j = 0; j < oTablero.Tablero_[i].size(); j++)
+    {
+      this -> Tablero_[i][j] = oTablero.Tablero_[i][j];
+    }
+  }
+}
 
 unsigned int Tablero::get_n()
 {
@@ -78,12 +90,15 @@ std::ostream& Tablero::write(std::ostream& os) const
     {
       os << "|" << *Tablero_[i][j];
     }
+    
     os << "|\n";
-  }
-
-  for (int k = 0; k < m_; k++)
-  {
-    os << " -";
+    
+    for (int k = 0; k < m_; k++)
+    {
+      os << " -";
+    }
+    
+    os << "\n";
   }
   os << "\n";
   return os;
@@ -91,8 +106,6 @@ std::ostream& Tablero::write(std::ostream& os) const
 
 void Tablero::destruir_tablero()
 {
-  n_ = 0;
-  m_ = 0;
   for (int i = 0; i < Tablero_.size(); i++)
   {
     for (int j = 0; j < Tablero_[i].size(); j++)
@@ -100,6 +113,8 @@ void Tablero::destruir_tablero()
       delete Tablero_[i][j];
     }
   }
+  n_ = 0;
+  m_ = 0;
 }
 
 std::ostream& operator << (std::ostream& os, const Tablero& tablero)

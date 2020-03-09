@@ -12,6 +12,7 @@ class Tablero {
     unsigned int m_;
   public:
     Tablero(unsigned int = 20, unsigned int = 20);
+    Tablero(const Tablero&);
     unsigned int get_n();
     unsigned int get_m();
     std::vector<std::vector<Celula*>> get_tablero();
