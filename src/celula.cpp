@@ -4,6 +4,7 @@
 Celula::Celula ()
 {
   Estado_ = false;
+  vivio_ = false;
   i_ = 0;
   j_ = 0;
   vecinos_ = 0;
@@ -12,6 +13,7 @@ Celula::Celula ()
 Celula::Celula(unsigned int i, unsigned int j)
 {
   Estado_ = false;
+  vivio_ = false;
   i_ = i;
   j_ = j;
 }
@@ -19,6 +21,7 @@ Celula::Celula(unsigned int i, unsigned int j)
 Celula::Celula(const Celula& celula2)
 {
   Estado_ = celula2.Estado_;
+  vivio_ = celula2.vivio_;
   i_ = celula2.i_;
   j_ = celula2.j_;
   vecinos_ = celula2.vecinos_;
@@ -38,9 +41,23 @@ unsigned int Celula::get_vecinos() const
   return vecinos_;
 }
 
+bool Celula::get_vivio () const
+{
+  return vivio_;
+}
+
 void Celula::set_Estado(bool valor)
 {
   Estado_ = valor;
+  if (valor == 1)
+  {
+    vivio_ = true;
+  }
+}
+
+void Celula::set_vivio(bool valor)
+{
+  vivio_ = valor;
 }
 
 void Celula::guardar_vecinos(const Tablero& Tablero_)
@@ -83,7 +100,10 @@ void Celula::guardar_vecinos(const Tablero& Tablero_)
 void Celula::actualizar()
 {
   if ((!Estado_ && vecinos_ == 3) || (Estado_ && (vecinos_ == 2 || vecinos_ == 3)))
+  {
     Estado_ = true;
+    vivio_ = 1;
+  }
   else 
     Estado_ = false;
 }

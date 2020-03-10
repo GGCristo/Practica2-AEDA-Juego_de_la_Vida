@@ -10,6 +10,7 @@ private:
   unsigned int i_;
   unsigned int j_;
   unsigned int vecinos_;
+  bool vivio_;
 public:
   Celula();
   Celula(unsigned int, unsigned int);
@@ -17,9 +18,11 @@ public:
   ~Celula();
   bool get_Estado() const;
   unsigned int get_vecinos() const;
+  bool get_vivio() const;
   void set_i (int pos) {i_ = pos;}
   void set_j (int pos) {j_ = pos;}
   void set_Estado(bool);
+  void set_vivio(bool);
   void guardar_vecinos(const Tablero&);
   void actualizar();
   std::ostream& write(std::ostream&) const;

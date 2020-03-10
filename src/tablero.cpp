@@ -85,6 +85,7 @@ Celula& Tablero::get_celula (unsigned int n, unsigned int m) const
 
 std::ostream& Tablero::write(std::ostream& os) const
 {
+  unsigned int siempre_muertas = 0;
   for (int k = 0; k < m_; k++)
   {
     os << " -";
@@ -96,6 +97,8 @@ std::ostream& Tablero::write(std::ostream& os) const
     for (int j = 1; j <= m_; j++)
     {
       os << "|" << Tablero_[i][j];
+      if (Tablero_[i][j].get_vivio() == 0)
+        siempre_muertas++;
     }
     
     os << "|\n";
@@ -108,6 +111,8 @@ std::ostream& Tablero::write(std::ostream& os) const
     os << "\n";
   }
   os << "\n";
+
+  std::cout << "Celulas que nunca han vivido: " << siempre_muertas << "\n";
   return os;
 }
 
